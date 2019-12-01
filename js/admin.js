@@ -33,10 +33,10 @@ $(document).ready(function(){
 		})
 	});
 
-	$("#ShowType").click(function(){
+	$("#UpdateRooms").click(function(){
 		$.ajax({
 			type: 'POST',
-			url:'List_room_types.php',
+			url:'List_update.php',
 			data:{},
 			success: function(data){
 				$("#results").html(data);
@@ -44,20 +44,5 @@ $(document).ready(function(){
 		})
 	});
 
-	$("#delete_btn").click(function(){
-
-		var row = $('[name = "delete"]').val();
-
-		$.ajax({
-			type: 'POST',
-			url:'delete_room.php',
-			data:{room: row},
-			success: function(data){
-				//$("#results").html(data);
-				alert("the room deleted: " + row);
-
-			}
-		})
-	});
-
+	
 });
