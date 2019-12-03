@@ -1,5 +1,6 @@
 <?php
-
+	session_start();
+	$user_id = $_SESSION['id'];
 	$localtion = $_GET['localtion'];
 	$startDate = $_GET['startDate'];
 	$endDate = $_GET['endDate'];
@@ -29,14 +30,12 @@
 				while ($row1 = mysqli_fetch_array($result1)) {
 					$room_id = intval($row1['room_id']);
 					$total_price = doubleval($row1['price']) * $days;
-				 $insertSql = "INSERT INTO BOOKING (booking_id,user_id,room_id,start_date,end_date,order_date,total_price) VALUES  (NULL, '1', '$room_id', '$startDate', '$endDate', CURRENT_DATE(), $total_price)";
-				 	echo $insertSql;
+				 $insertSql = "INSERT INTO BOOKING (booking_id,user_id,room_id,start_date,end_date,order_date,total_price) VALUES  (NULL, '$user_id', '$room_id', '$startDate', '$endDate', CURRENT_DATE(), $total_price)";
 				 	$result2 = mysqli_query($con, $insertSql);
 				 }
 				 unset($_COOKIE[$cookie_name]);
 				 setcookie($cookie_name, '');
-
-				 header("Location: http://localhost:8888/CS6314_Final_Project/cart.php");
+				 echo "<span>Successfully booked.</span>";
 			}
 		}
 	}

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+session_start();
+if (is_null($_SESSION["id"]) || $_SESSION['id']=='') {
+    header('Location: index.html');
+  }
+?>
 <head>
 
   <meta charset="utf-8">
@@ -40,13 +45,16 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <p class="nav-link">Welcome,</p>
+            <p class="nav-link">Welcome, <?php echo $_SESSION['firstname']; ?></p>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="cart.php">Cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="orders.php"> My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking_page.php">Book Room</a>
           </li>
         </ul>
       </div>
