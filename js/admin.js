@@ -44,5 +44,17 @@ $(document).ready(function(){
 		})
 	});
 
+	$("#Listrooms").click(function(){
+
+		$.ajax({
+			type: 'POST',
+			url:'List_Types.php',
+			data:{},
+			success: function(data){
+				$("#results").html(data);
+			}
+		})
+	});
+
 	
 });
